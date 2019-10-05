@@ -7,6 +7,7 @@ int squareSize =10;
 color[] color_pallete = new color[5]; 
 color bg_color; 
 String filename; 
+boolean saveImages = true; 
 
 void setup()
 {
@@ -16,7 +17,7 @@ void setup()
   color_pallete = darksnpink;
   bg_color = color_pallete[int(random(0,4))];
   background(bg_color); 
-  size(400,400); 
+  size(600,600); 
   
    createGrid(); 
 }
@@ -25,7 +26,7 @@ void draw()
 {
  //background(bg_color); 
  createGrid(); 
- save(filename+"-"+cnt+".tiff");
+ if(saveImages) { save(filename+"-"+cnt+".png"); }
 }
 
 void createGrid()
@@ -59,7 +60,7 @@ void drawSquarePattern(int n, int size, int x, int y)
     rect(0, 0, shapeSize, shapeSize );
     shapeSize = shapeSize - (size * 0.2); 
     popMatrix(); 
-    // save(filename+"-"+cnt+".tiff");
+    // save(filename+"-"+cnt+".png");
     cnt++; 
   }
 }
