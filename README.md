@@ -15,4 +15,4 @@ Is my most recent and found it to be the most fun to create as it has a number o
 
 
 ## Generative Shapes 
-![GenerativeShapes](2104.png)
+![GenerativeShapes](GenerativeShapes/2104.png)
