@@ -33,6 +33,8 @@ class Particle {
     intensity--; 
     fill(255,255,255,intensity);
      ellipse(x+dx,y+dy,size,size); 
+       x = x + int(random(-5,5)); 
+      y = y + int(random(-5,5)); 
     } else {
     intensity = 255; 
     x = int(random(0,width)); 

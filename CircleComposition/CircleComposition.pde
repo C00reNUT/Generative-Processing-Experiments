@@ -147,7 +147,7 @@ void keyPressed()
 {
   if (key == UP)
   {
-  save(hour()+minute()+second()+year()+".jpg"); 
+   
   }
 }
 

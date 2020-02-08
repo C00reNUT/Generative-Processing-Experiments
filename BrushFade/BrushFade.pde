@@ -5,7 +5,7 @@ boolean finished = false;
 void setup()
 {
   background(0,0,0); 
-  size(1200,1200); 
+  size(3000,3000); 
   brushes = new ArrayList<Brush>(); 
 }
 

@@ -36,7 +36,7 @@ void draw()
     }
   }
   square = int(random(1,40));
-  save(count+".jpg");
+ // save(count+".jpg");
   count++; 
   
 }
