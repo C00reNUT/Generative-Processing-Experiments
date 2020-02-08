@@ -1,4 +1,4 @@
-Particule[] m = new Particule[6000]; 
+Particle[] m = new Particle[6000]; 
 Attractor a;
 int iter = 0; 
 String filename = str(hour()+minute()+second()+year()); 
@@ -7,7 +7,7 @@ void setup() {
   size(800,800);
   for(int i = 0; i < m.length; i++)
   {
-   m[i] =  new Particule(random(0,1),random(0,width),random(0,height));
+   m[i] =  new Particle(random(0,1),random(0,width),random(0,height));
   }
   a = new Attractor();
 }

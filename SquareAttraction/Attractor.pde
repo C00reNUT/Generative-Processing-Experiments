@@ -9,7 +9,7 @@ class Attractor {
     G = 0.4;
   }
 
-  PVector attract(Particule m) {
+  PVector attract(Particle m) {
     PVector force = PVector.sub(location,m.location);
     float distance = force.mag();
     distance = constrain(distance,5.0,20.0);

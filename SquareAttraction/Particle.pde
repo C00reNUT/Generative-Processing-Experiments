@@ -1,5 +1,5 @@
 
-class Particule { 
+class Particle { 
   PVector location; 
   PVector velocity; 
   PVector acceleration; 
@@ -11,7 +11,7 @@ class Particule {
   float aVelocity = 0; 
   float aAcceleration = 0.01; 
 
-  Particule(float m, float x, float y) 
+  Particle(float m, float x, float y) 
   {
 
     GetPallette(); 
@@ -23,7 +23,7 @@ class Particule {
   }
   
   
-    PVector attract(Particule m) {
+    PVector attract(Particle m) {
  
       
     PVector force = PVector.sub(location,m.location);
