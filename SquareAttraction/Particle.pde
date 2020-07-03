@@ -8,7 +8,7 @@ class Particle {
   color col;
   
   float angle = 0; 
-  float aVelocity = 0; 
+  float aVelocity = 3; 
   float aAcceleration = 0.01; 
 
   Particle(float m, float x, float y) 
@@ -19,7 +19,7 @@ class Particle {
     velocity = new PVector(1, 2); 
     acceleration = new PVector(0, 0); 
     mass = m;
-    col = redblue[int(random(0,4))];
+    col = outdoors[int(random(0,4))];
   }
   
   

@@ -24,6 +24,6 @@ for(int i = 0; i < m.length; i++)
   a.display();
   m[i].display();
 }
-//  save(filename+"_"+iter+".tiff"); 
+  save(filename+"_"+iter+".jpg"); 
   iter++; 
 }

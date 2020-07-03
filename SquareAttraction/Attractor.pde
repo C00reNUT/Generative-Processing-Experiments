@@ -5,14 +5,14 @@ class Attractor {
 
   Attractor() {
     location = new PVector(width/2,height/2);
-    mass = 30;
+    mass = 50;
     G = 0.4;
   }
 
   PVector attract(Particle m) {
     PVector force = PVector.sub(location,m.location);
     float distance = force.mag();
-    distance = constrain(distance,5.0,20.0);
+    distance = constrain(distance,5.0,10.0);
 
 
     force.normalize();
