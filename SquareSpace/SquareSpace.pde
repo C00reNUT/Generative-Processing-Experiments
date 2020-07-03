@@ -1,82 +1,70 @@
-//-----------------------------------------
-//-- Title: Grid generation 2.0 (w/ sound inserted
-//-- Date: 26/01/2019 1:23 
-//-- Author: Christopher Ried
-//-- Purpose: 
-//-----------------------------------------
+color[] c_swatch = {#7c4d4c, #c93f37, #771B05, #e8785d, #d5a78e, #d26220, #ad5a26, #e98340, 
+                #76370e, #b77c4e, #8a4502, #e2a864, #f5ab4f, #f9ca89,  #d2881c, #f8d55e, 
+                #e5c842, #ada763, #ded98e, #d5db82, #dfe693, #447855, #17765d,  #17765d, 
+                #72a89b, #238576, #8ab9c8, #8b2d40, #9e262e, #8b2328, #bf3739};
+int max_iter, iter;                 
+String filename; 
+ SquareFlower[] flower = new SquareFlower[500];
+void setup() 
+{ 
+  size(800,800); 
+  max_iter = 500;
+  for(int i = 1; i < 500; i++)
+ {
+  flower[i] = new SquareFlower();  
+ }
 
-  
-
-import processing.sound.*;
-AudioIn in;
-
-int choice = 1; 
-int square = 60;  
-int count = 1; 
-int min = 1200;
-int max = 1000; 
-boolean generateImages = false; 
-
-void settings()
-{
-  size(min,max);
+  iter = 0; 
+  filename = str(hour()+minute()+second()+year()); 
 }
- 
-
-void setup()
+void draw() 
 {
- noStroke(); 
- // Create the Input stream
-  in = new AudioIn(this, 0);
-  in.play(); 
-}
+  flower[1].drawFlower(); 
+ for(int i = 1; i < 500; i++)
+ {
+   flower[i].drawFlower(); 
+ }
+ save(filename+iter+".tiff"); 
+iter++; 
+} 
 
-void draw()
-{
-  for(int y = 0; y <= square; y = y + 1)
+class SquareFlower
+{ float x, y, start_square, len_square;
+  float rotation; 
+  color flower_stroke, flower_fill; 
+  float alpha;  
+
+   SquareFlower()
   {
-    for (int x = 0; x <= square; x = x + 1)
-    {
-      choice = int(random(1,3)); 
-      
-      if(choice == 1)
-      {
-      generatePoints(x,y); 
-      }
-      else
-      {
-        generateSquares(x,y);
-      }
-    }
+    init(); 
   }
-  //square = int(random(1,100));
- if(generateImages) {save(count+".jpg");}
- 
-  count++; 
   
-}
+  void drawFlower() 
+  {
+     for(int i = 0; i <= max_iter; i++)
+    {
+      stroke(flower_stroke,alpha); 
+      fill(flower_fill,alpha); 
+      pushMatrix(); 
+      translate(x,y); 
+      rotate(random(0,TWO_PI)); 
+      square(0,0,start_square); 
+      popMatrix(); 
+      start_square = start_square + 0.02;
+      if (start_square > 50) { start_square = len_square; init(); } 
+    }
 
-
-// Extra functions to generate various shapes
-void generateEllipse(int x,int y)
-{
-   fill(0, random(50, 255), random(50, 255), random(0, 255));
-   ellipse(int((width/square)*x), int((height/square)*y), random(1,width/square),random(1,width/square)); 
-}
-
-void generateSquares(int x, int y)
-{
-  float randomSize = random(0,width/20); 
-  fill(random(50, 255),0, random(50, 255), 5);
-  rect((width/square)*x, (height/square)*y, randomSize, randomSize); 
-}
-
-void generatePoints(int x, int y)
-{
-  point(int((width/square)*x),int((height/square)*y)); 
-}
-
-void generateRandomPoints()
-{
-  point(random(1,height),random(1, width)); 
+     alpha = alpha-5; 
+  }   
+  
+  void init()
+  {
+    x = random(0,width); 
+    y = random(1,height); 
+    flower_stroke = c_swatch[int(random(1,30))];
+    flower_fill = c_swatch[int(random(1,30))]; 
+    alpha =  random(0,100); 
+    start_square = random(0,30);
+    len_square = start_square; 
+  }
 }
